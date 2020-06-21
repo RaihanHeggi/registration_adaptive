@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form Pendaftaran</title>
 
-    <link rel="stylesheet" href="assets/fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>/assets/css/style.css">
 
 </head>
 <body>
@@ -16,7 +16,7 @@
         <div class="container">
             <div class="signup-content">
                 <div class="signup-img">
-                    <img src="assets/images/signup-img.jpg" alt="">
+                    <img src="<?php echo $this->config->item('base_url'); ?>/assets/images/signup-img.jpg" alt="">
                 </div>
                 <div class="signup-form">
                     <form method="POST" class="register-form" id="register-form" action="<?=site_url('formPendaftaran/insert_data')?>"> 
@@ -73,7 +73,7 @@
 
     </div>
 
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="<?php echo $this->config->item('base_url'); ?>/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo $this->config->item('base_url'); ?>/assets/js/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
