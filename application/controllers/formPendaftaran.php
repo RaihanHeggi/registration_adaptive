@@ -21,27 +21,30 @@ class FormPendaftaran extends CI_Controller {
         $namaInstitusi = $this->input->post('namaInstitusi');
         $nomorHP = $this->input->post('nomorHP');
         $email = $this->input->post('email');
-        $config['upload_path']          = './assets/registration_images/'; //isi dengan nama folder temoat menyimpan gambar
-        $config['allowed_types']        =  'jpg|png';//isi dengan format/tipe gambar yang diterima
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('pictValidation')){
-            $config['info'] = $this->upload->display_errors();
-        }else{
-            $config['info'] = 'Upload Berhasil';
-            $cek = array('upload_data' => $this->upload->data());
-        }
-        $uploadData = array('upload_data' => $this->upload->data());
-        $data = array(
-            'nama' => $nama, 
-            'tempat_lahir' => $tempat_lahir,
-            'tangal_lahir' => $tempat_lahir,
-            'nomor_kontak' => $nomorHP,
-            'status_pendidikan' => $pendidikan,
-            'nama_institusi' => $namaInstitusi,
-            'email' => $email,
-            'bukti_scan' => $uploadData['upload_data']['file_name']
-        );
-        $this->pendaftaranModel->insertData($data);
-        redirect('FormPendaftaran');
+        if(!$this->pendaftaranModel->cekData($nama)){
+            $config['upload_path']          = './assets/registration_images'; //isi dengan nama folder temoat menyimpan gambar
+            $config['allowed_types']        = 'gif|jpg|png';
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('pictValidation')){
+                $config['info'] = $this->upload->display_errors();
+            }else{
+                $config['info'] = 'Upload Berhasil';
+                $uploadData = array('upload_data' => $this->upload->data());
+            }
+            $data = array(
+                'nama' => $nama, 
+                'tempat_lahir' => $tempat_lahir,
+                'tanggal_lahir' => $tanggal_lahir,
+                'nomor_kontak' => $nomorHP,
+                'status_pendidikan' => $pendidikan,
+                'nama_institusi' => $namaInstitusi,
+                'email' => $email,
+                'bukti_scan' => $uploadData['upload_data']['file_name']
+            );
+            $this->pendaftaranModel->insertData($data);
+            redirect('FormPendaftaran');
+        }else{ 
+            redirect('FormPendaftaran');
+        }        
     }
 }

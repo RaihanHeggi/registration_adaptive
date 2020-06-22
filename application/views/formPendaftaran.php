@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form Pendaftaran</title>
 
-    <link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $this->config->item('base_url');?>/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="<?php echo $this->config->item('base_url');?>/assets/css/style.css">
 
 </head>
 <body>
@@ -40,8 +40,10 @@
                                 <label for="status">Pendidikan Saat Ini </label>
                                 <div class="form-select">
                                     <select name="status" id="status">
-                                        <option value="Mahasiswa/i" selected>Mahasiswa/i</option>
-                                        <option value="Siswa/i">Siswa/i</option>
+                                        <option value="Mahasiswa" selected>Mahasiswa</option>
+                                        <option value="Mahasiswi">Mahasiswi</option>
+                                        <option value="Siswa">Siswa</option>
+                                        <option value="Siswi">Siswi</option>
                                     </select>
                                     <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
                                 </div>
