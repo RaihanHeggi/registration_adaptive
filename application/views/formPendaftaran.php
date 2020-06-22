@@ -19,7 +19,7 @@
                     <img src="<?php echo $this->config->item('base_url'); ?>/assets/images/signup-img.jpg" alt="">
                 </div>
                 <div class="signup-form">
-                    <form method="POST" class="register-form" id="register-form" action="<?=site_url('formPendaftaran/insert_data')?>"> 
+                    <form enctype="multipart/form-data" method="POST" class="register-form" id="register-form" action="<?=site_url('formPendaftaran/insert_data')?>"> 
                         <h2>Form Registrasi</h2>
                         <div class="form-group">
                             <label for="name">Nama Lengkap </label>

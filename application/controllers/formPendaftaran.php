@@ -30,18 +30,18 @@ class FormPendaftaran extends CI_Controller {
             }else{
                 $config['info'] = 'Upload Berhasil';
                 $uploadData = array('upload_data' => $this->upload->data());
+                $data = array(
+                    'nama' => $nama, 
+                    'tempat_lahir' => $tempat_lahir,
+                    'tanggal_lahir' => $tanggal_lahir,
+                    'nomor_kontak' => $nomorHP,
+                    'status_pendidikan' => $pendidikan,
+                    'nama_institusi' => $namaInstitusi,
+                    'email' => $email,
+                    'bukti_scan' => $uploadData['upload_data']['file_name']
+                );
+                $this->pendaftaranModel->insertData($data);
             }
-            $data = array(
-                'nama' => $nama, 
-                'tempat_lahir' => $tempat_lahir,
-                'tanggal_lahir' => $tanggal_lahir,
-                'nomor_kontak' => $nomorHP,
-                'status_pendidikan' => $pendidikan,
-                'nama_institusi' => $namaInstitusi,
-                'email' => $email,
-                'bukti_scan' => $uploadData['upload_data']['file_name']
-            );
-            $this->pendaftaranModel->insertData($data);
             redirect('FormPendaftaran');
         }else{ 
             redirect('FormPendaftaran');
