@@ -5,12 +5,12 @@ class FormPendaftaran extends CI_Controller {
 
     function __construct(){
         parent::__construct();
-        $this->load->model('pendaftaranModel');     
+        $this->load->model('PendaftaranModel');     
     }
 
 	public function index()
 	{
-		$this->load->view('formPendaftaran');
+		$this->load->view('FormPendaftaran');
     }
     
     public function insert_data(){
@@ -21,7 +21,7 @@ class FormPendaftaran extends CI_Controller {
         $namaInstitusi = $this->input->post('namaInstitusi');
         $nomorHP = $this->input->post('nomorHP');
         $email = $this->input->post('email');
-        if(!$this->pendaftaranModel->cekData($nama,$tanggal_lahir,$tempat_lahir,$namaInstitusi,$nomorHP)){
+        if(!$this->PendaftaranModel->cekData($nama,$tanggal_lahir,$tempat_lahir,$namaInstitusi,$nomorHP)){
             $config['upload_path']          = './assets/registration_images'; //isi dengan nama folder temoat menyimpan gambar
             $config['allowed_types']        = 'gif|jpg|png';
             $this->load->library('upload', $config);
@@ -40,8 +40,8 @@ class FormPendaftaran extends CI_Controller {
                     'email' => $email,
                     'bukti_scan' => $uploadData['upload_data']['file_name']
                 );
-                $this->pendaftaranModel->insertData($data);
-                redirect('bufferPage');
+                $this->PendaftaranModel->insertData($data);
+                redirect('BufferPage');
             }
             redirect('FormPendaftaran');
         }else{ 
