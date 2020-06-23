@@ -210,11 +210,13 @@ body {
   margin: 0 auto;
   background: #fff; }
 
-.signup-img, .signup-form {
+.signup-form {
   width: 50%; }
 
 .signup-img {
-  margin-bottom: -7px; }
+  color: #222;
+  background: #282828; }
+  
 
 .register-form {
   padding: 50px 100px 50px 70px; }

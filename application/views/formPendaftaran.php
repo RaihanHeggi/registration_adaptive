@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form Pendaftaran</title>
-
     <link rel="stylesheet" href="<?php echo $this->config->item('base_url');?>/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="<?php echo $this->config->item('base_url');?>/assets/css/style.css">
 
@@ -21,6 +20,9 @@
                 <div class="signup-form">
                     <form enctype="multipart/form-data" method="POST" class="register-form" id="register-form" action="<?=site_url('formPendaftaran/insert_data')?>"> 
                         <h2>Form Registrasi</h2>
+                        <div class="form-group">
+                            <?php echo $this->session->flashdata('error_messages'); ?>
+                        </div>
                         <div class="form-group">
                             <label for="name">Nama Lengkap </label>
                             <input type="text" name="name" id="name" required/>
