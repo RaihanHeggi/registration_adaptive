@@ -24,7 +24,7 @@
                                 <a class="btn btn-secondary btn-lg" href="<?= site_url('formPendaftaran/index') ?>" role="button">Back</a>  
                             </div>
                             <div>
-                                <input class="btn btn-lg btn-primary" type="submit" value="Next Page" >
+                                <input class="btn btn-lg btn-primary" type="submit" value="Next Page" />
                             </div>
                         </div>
                     </form>
