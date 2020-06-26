@@ -12,5 +12,12 @@ class BufferPage extends CI_Controller {
 	{
 		$this->load->view('BufferPage');
     }
+
+    public function nextPage(){
+        $this->load->view('FormVerifikasi');
+    }
     
+    public function lastPage(){
+        $this->load->view('LastPage');
+    }
 }

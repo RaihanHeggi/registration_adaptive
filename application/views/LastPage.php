@@ -17,15 +17,11 @@
     <div class="main">
         <div class="container">
                 <div>
-                    <form enctype="multipart/form-data" method="POST" class="register-form" id="register-form" action="<?=site_url('BufferPage/nextPage')?>"> 
-                        <h2>Terimakasih Sudah Melakukan Registrasi Silahkan Melanjutkan Ke Menu Verifikasi Pembayaran</h2>
+                    <form enctype="multipart/form-data" method="POST" class="register-form" id="register-form"> 
+                        <h2>Terimakasih Sudah Melakukan Registrasi dan Verifikasi Sampai Berjumpa Di Hari H</h2>
                         <div class="form-row">
                             <div>
                                 <a class="btn btn-secondary btn-lg" href="<?= site_url('FormPendaftaran/index') ?>" role="button">Back</a>  
-                            </div>
-                            <div>
-                                <input class="btn btn-lg btn-primary" type="submit" value="Next Page" />
-                            </div>
                         </div>
                     </form>
                 </div>

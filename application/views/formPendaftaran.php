@@ -65,9 +65,11 @@
                         </div>
                         <div class="form-group">
                             <label for="pictValidation">Foto Scan Kartu Pelajar</label>
-                            <input type="file" name="pictValidation" id="pictValidation" />
+                            <input type="file" name="pictValidation" id="pictValidation"/>
+                            <a href="<?= site_url('FormVerifikasi/index')?>">Sudah Melakukan Registrasi, Klik Disini</a>
                         </div>
                         <div class="form-submit">
+                            
                             <input type="submit" value="Submit Form" class="submit" name="submit" id="submit" />
                         </div>
                     </form>
