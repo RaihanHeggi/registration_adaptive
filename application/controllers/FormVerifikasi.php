@@ -24,10 +24,18 @@ class FormVerifikasi extends CI_Controller {
             redirect('FormVerifikasi/index');
         }else{ 
             if(!$this->VerifikasiModel->cekDataVerifikasi($nama,$email,$nomorHP)){
-                $config['upload_path']          = './assets/verification_images'; //isi dengan nama folder temoat menyimpan gambar
+                $config['upload_path']          = './assets/verification_images/'.$nama; //isi dengan nama folder temoat menyimpan gambar
                 $config['allowed_types']        = 'gif|jpg|png';
                 $this->load->library('upload', $config);
+                if (!is_dir('./assets/verification_images/'.$nama))
+                {
+                    mkdir('./assets/verification_images/'.$nama, 0777, true);
+                    $dir_exist = false;
+                }
                 if (!$this->upload->do_upload('pictValidation')){
+                    if(!$dir_exist){
+                        rmdir('./assets/verification_images/'.$nama);
+                    }
                     $config['info'] = $this->upload->display_errors();
                 }else{
                     $config['info'] = 'Upload Berhasil';

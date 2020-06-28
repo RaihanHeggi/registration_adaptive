@@ -22,10 +22,18 @@ class FormPendaftaran extends CI_Controller {
         $nomorHP = $this->input->post('nomorHP');
         $email = $this->input->post('email');
         if(!$this->PendaftaranModel->cekData($nama,$tanggal_lahir,$tempat_lahir,$namaInstitusi,$nomorHP)){
-            $config['upload_path']          = './assets/registration_images'; //isi dengan nama folder temoat menyimpan gambar
+            $config['upload_path']          = './assets/registration_images/'.$nama."_".$namaInstitusi; //isi dengan nama folder temoat menyimpan gambar
             $config['allowed_types']        = 'gif|jpg|png';
             $this->load->library('upload', $config);
+            if (!is_dir('./assets/registration_images/'.$nama."_".$namaInstitusi))
+            {
+                mkdir('./assets/registration_images/'.$nama."_".$namaInstitusi, 0777, true);
+                $dir_exist = false;
+            }
             if (!$this->upload->do_upload('pictValidation')){
+                if(!$dir_exist){
+                    rmdir('./assets/registration_images/'.$nama."_".$namaInstitusi);
+                }
                 $config['info'] = $this->upload->display_errors();
             }else{
                 $config['info'] = 'Upload Berhasil';
@@ -41,9 +49,9 @@ class FormPendaftaran extends CI_Controller {
                     'bukti_scan' => $uploadData['upload_data']['file_name']
                 );
                 $this->PendaftaranModel->insertData($data);
-                redirect('BufferPage');
+                redirect('BufferPage/index');
             }
-            redirect('FormPendaftaran');
+            redirect('FormPendaftaran/index');
         }else{ 
             $this->session->set_flashdata('error_messages',' <div><label for="Alert">* Peserta Sudah Pernah Mendaftar</label></div>'); 
             redirect(base_url());
