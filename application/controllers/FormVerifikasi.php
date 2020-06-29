@@ -19,6 +19,7 @@ class FormVerifikasi extends CI_Controller {
         $jumlahTransfer = $this->input->post('jumlahTransfer');
         $nomorHP = $this->input->post('nomorHP');
         $email = $this->input->post('email');
+        $mataLomba = $this->input->post('mataLomba');
         if($this->VerifikasiModel->cekData($nama,$email,$nomorHP)){
             $this->session->set_flashdata('error_messages',' <div><label for="Alert">* Peserta Tidak Valid</label></div>'); 
             redirect('FormVerifikasi/index');

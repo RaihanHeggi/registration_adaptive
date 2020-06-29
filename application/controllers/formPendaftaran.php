@@ -21,6 +21,7 @@ class FormPendaftaran extends CI_Controller {
         $namaInstitusi = $this->input->post('namaInstitusi');
         $nomorHP = $this->input->post('nomorHP');
         $email = $this->input->post('email');
+        $mataLomba = $this->input->post('mataLomba');
         if(!$this->PendaftaranModel->cekData($nama,$tanggal_lahir,$tempat_lahir,$namaInstitusi,$nomorHP)){
             $config['upload_path']          = './assets/registration_images/'.$nama."_".$namaInstitusi; //isi dengan nama folder temoat menyimpan gambar
             $config['allowed_types']        = 'gif|jpg|png';
@@ -46,6 +47,7 @@ class FormPendaftaran extends CI_Controller {
                     'status_pendidikan' => $pendidikan,
                     'nama_institusi' => $namaInstitusi,
                     'email' => $email,
+                    'mata_lomba' => $mataLomba,
                     'bukti_scan' => $uploadData['upload_data']['file_name']
                 );
                 $this->PendaftaranModel->insertData($data);

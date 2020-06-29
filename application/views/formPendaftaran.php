@@ -56,6 +56,16 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="status">Mata Lomba Di ikuti</label>
+                            <div class="form-select">
+                                <select name="mataLomba" id="mataLomba">
+                                    <option value="NSAC" selected>NSAC</option>
+                                    <option value="NSC">NSC</option>
+                                </select>
+                                <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="nomorHP">Nomor HP</label>
                             <input type="text" name="nomorHP" id="nomorHP">
                         </div>
