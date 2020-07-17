@@ -51,7 +51,7 @@ class FormPendaftaran extends CI_Controller {
                     'bukti_scan' => $uploadData['upload_data']['file_name']
                 );
                 $this->PendaftaranModel->insertData($data);
-                $this->_sendEmail();
+                $this->_sendEmail($email);
                 redirect('BufferPage/index');
             }
             redirect('FormPendaftaran/index');
