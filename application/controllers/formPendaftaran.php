@@ -51,6 +51,7 @@ class FormPendaftaran extends CI_Controller {
                     'bukti_scan' => $uploadData['upload_data']['file_name']
                 );
                 $this->PendaftaranModel->insertData($data);
+                $this->_sendEmail();
                 redirect('BufferPage/index');
             }
             redirect('FormPendaftaran/index');
@@ -58,5 +59,31 @@ class FormPendaftaran extends CI_Controller {
             $this->session->set_flashdata('error_messages',' <div><label for="Alert">* Peserta Sudah Pernah Mendaftar</label></div>'); 
             redirect(base_url());
         }        
+    }
+
+    private function _sendEmail($email){
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => '', //Isi dengan Host SMTP 
+            'smtp_user' => '', //isi dengan Email User yang digunakan 
+            'smtp_pass' => '', //isi dengan Password Email User
+            'smtp_port' => 465, //isi dengan port yang digunakan
+            'mailtype' => 'html', //isi dengan tipe email yang digunakan biarkan html saja
+            'charset' => 'utf-8', //type charsetnya 
+            'newline' => "/r/n"
+            $config['wordwrap'] = TRUE;
+        );
+        $this->load->library('email',$config);  
+        $this->email->initialize($config);
+        $this->email->from('ISI DENGAN EMAIL PENGIRIM', 'NAMA ALIASNYA');
+        $this->email->to($email);
+        $this->email->subject('Terimakasih Sudah Mendaftar');
+        $this->email->message('ISI DENGAN PESAN YANG INGIN DIKIRIMKAN');
+        if($this->email->send()){
+            return true;
+        }else {
+            echo $this->email->print_debugger();
+            die;
+        }
     }
 }
